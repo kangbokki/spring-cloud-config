@@ -15,7 +15,7 @@ dockerfile
 
 ## 용어
 **명령어&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용도**  
-**FROM**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base 이미지 설정  
+**FROM**`    base 이미지 설정`  
 **WORKDIR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작업 디렉터리 설정  
 **RUN**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지 빌드 시 커맨드 실행  
 **ENTRYPOINT**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지 실행 시 항상 실행되야 하는 커맨드 설정  

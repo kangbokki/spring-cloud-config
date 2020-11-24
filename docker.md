@@ -10,11 +10,11 @@ dockerfile
 ## 위치
 	로젝트 최상위 디렉터리 Dockerfile 위치
 ## 문법	
-	&#35; 주석(Comment)
+	'#' 주석(Comment)
 	명령어(INSTRUCTION) 인자(arguments)
 
 ## 용어
-**명령어&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;용도**
+**명령어&nbsp;&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;&nsp;용도**  
 **FROM**            base 이미지 설정  
 **WORKDIR**         작업 디렉터리 설정  
 **RUN**             이미지 빌드 시 커맨드 실행  

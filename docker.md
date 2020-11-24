@@ -4,16 +4,16 @@
 dockerfile
 ----------
 
-# 개요
+## 개요
 	Docker 이미지(image)가 어떤 단계를 거쳐 빌드(build)되야 하는지를 담고있는 텍스트 파일입니다.
 	Docker는 Dockerfile에 나열된 명령문을 차례대로 수행하여 이미지를 생성해줍니다.
-# 위치
+## 위치
 	로젝트 최상위 디렉터리 Dockerfile 위치
-# 문법	
+## 문법	
 	&#35; 주석(Comment)
 	명령어(INSTRUCTION) 인자(arguments)
 
-# 용어
+## 용어
 명령어					용도
 FROM			base 이미지 설정
 WORKDIR			작업 디렉터리 설정
@@ -27,13 +27,13 @@ ARG				빌드 시 넘어올 수 있는 인자 설정
 
 
 
-# dockerignore
+## dockerignore
 
 .dockerignore
 	.git
 	.md
 
-# docker-compose
+## docker-compose
 
 docker-compose.yml
 

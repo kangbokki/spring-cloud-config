@@ -5,13 +5,13 @@ Dockerfile
 ----------
 
 ## 개요
-	Docker 이미지(image)화 하는 정보 텍스트 파일.
-	Docker는 Dockerfile에 나열된 명령문을 차례대로 수행하여 이미지를 생성한다.
+    Docker 이미지(image)화 하는 텍스트 정보 파일.
+    Dockerfile 기록된 명령문을 순차적으로 수행하여 이미지를 생성.
 ## 위치
-	로젝트 최상위 디렉터리 Dockerfile 위치
+    프로젝트 최상위 디렉터리 Dockerfile 위치
 ## 문법	
-	# 주석(Comment)
-	명령어(INSTRUCTION) 인자(arguments)
+    # 주석(Comment)
+    명령어(INSTRUCTION) 인자(arguments)
 
 ## 용어
 |명령어|용도|

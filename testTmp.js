@@ -1,4 +1,4 @@
-cost indent = 4;
+const indent = 4;
 const uppercase = true;
 const PARAM = '{{PARAM}}';
 const SUB_QUERY = '{{SUB_QUERY}}';
@@ -6,40 +6,40 @@ const arrOperator = ['+', '-', '/', '*', '='];
 const arrNewLine = ['SELECT', 'FROM', 'WHERE', 'AND', 'ORDER BY', 'GROUP BY', 'INNER', 'LEFT'
                   , 'WHEN', 'ELSE', 'END', 'UNION ALL', 'INSERT INTO', 'UPDATE', 'DELETE', 'SET', 'VALUES', 'LIMIT'];
 
-const getParentisParser = function (data = '') {
-  const arrParentisData = [];
-  const arrLeftparentis = [];
-  const arrRightParentis = [];
-  const arrParentis = [];
-  const parentisPoint = [];
+const getParenthesisParser = function (data = '') {
+  const arrParenthesisData = [];
+  const arrLeftParenthesis = [];
+  const arrRightParenthesis = [];
+  const arrParenthesis = [];
+  const parenthesisPoint = [];
   
   data.split('').forEach((el, idx) => {
     if ( el == '(' ) {
-      arrParentis.push({left: idx});
+      arrParenthesis.push({left: idx});
       
-      parentisPoint.push(arrParentis.length -1);
+      parenthesisPoint.push(arrParenthesis.length -1);
     } else if ( el == ')' ) {
-      arrParentis[parentisPoint.pop()].right = idx;
+      arrParenthesis[parenthesisPoint.pop()].right = idx;
     }
   });
   
-  arrParentis.forEach(el => {
+  arrParenthesis.forEach(el => {
     if ( el.left + 1 == el.right ) {
       return;
     }
     
-    arrParentisData.push(data.substring(el.left, el.right +1));
+    arrParenthesisData.push(data.substring(el.left, el.right +1));
   });
   
-  arrParentisData.forEach((el, idx, arr) => {
-    if ( arrParentisData.length > (idx + 1) ) {
+  arrParenthesisData.forEach((el, idx, arr) => {
+    if ( arrParenthesisData.length > (idx + 1) ) {
       arr[idx] = el.replace(arr[idx + 1], SUB_QUERY);
     }
   });
   
-  console.log(arrParentisData);
+  console.log(arrParenthesisData);
   
-  return {parentis: arrParentis, parentisData: arrParentisData};
+  return {parenthesis: arrParenthesis, parenthesisData: arrParenthesisData};
 )
 
 const getQuoteParser = function (data = '') {
@@ -110,9 +110,9 @@ function () {
     replaceData = replaceData.replace(el, PARAM);
   });
   
-  const parentis = getParentisParser(data);
+  const parenthesis = getParenthesisParser(data);
   
-  parentis.parentisData.reverse().forEach(el => {
+  parenthesis.parenthesisData.reverse().forEach(el => {
     replaceData = replaceData.replace(el, SUB_QUERY);
   });
   
@@ -120,7 +120,7 @@ function () {
   
   console.log(String(replaceData));
   
-  parentis.parentisData.forEach((el, idx, arr) => {
+  parenthesis.parenthesisData.forEach((el, idx, arr) => {
     arr[idx] = replaceData(arr[idx]);
     
     const arrQuote = getQuoteParser(el);
@@ -134,27 +134,27 @@ function () {
     });
   });
   
-  console.log(parentis);
+  console.log(parenthesis);
   
-  parentis.applyParentis = [];
-  parentis.parentisData.reverse();
+  parenthesis.applyParenthesis = [];
+  parenthesis.parenthesisData.reverse();
   
-  while (parentis.parentisData.length) {
-    let val = parentis.parentisData.pop();
+  while (parenthesis.parenthesisData.length) {
+    let val = parenthesis.parenthesisData.pop();
     
     if ( val.indexOf(SUB_QUERY) > -1 ) {
-      val = val.replace(SUB_QUERY, parentis.applyParentis.pop());
+      val = val.replace(SUB_QUERY, parenthesis.applyParenthesis.pop());
     }
     
-    parentis.applyParentis.push(val);
+    parenthesis.applyParenthesis.push(val);
   }
   
-  parentis.applyParentis.reverse();
+  parenthesis.applyParenthesis.reverse();
   
   console.log('조립');
-  console.log(parentis.applyParentis);
+  console.log(parenthesis.applyParenthesis);
   
-  parentis.applyParentis.forEach(el => {
+  parenthesis.applyParenthesis.forEach(el => {
     replaceData = replaceData.replace(SUB_QUERY, el);
   });
   
